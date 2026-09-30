@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://cf1cet4r3374t" path="res://assets/fonts/Cinzel-Bold.ttf" id="6_cinzel"]
 [ext_resource type="Texture2D" uid="uid://42l7tupm8cbk" path="res://assets/felix_ult.png" id="7_felix_ult"]
 [ext_resource type="Texture2D" uid="uid://1yljutisf7kt" path="res://assets/mella_ult.png" id="8_mella_ult"]
+[ext_resource type="Texture2D" uid="uid://cat5wbkyublyy" path="res://assets/castle_bg.png" id="9_castle_bg"]
 
 ; ─────────────────────────────────────────────
 ;  StyleBoxes
@@ -589,6 +590,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="MenuBackground" type="TextureRect" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_castle_bg")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="Overlay" type="ColorRect" parent="CanvasLayer/StartScreen"]
 layout_mode = 1
 anchors_preset = 15
@@ -597,7 +610,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.03, 0.04, 0.08, 0.92)
+color = Color(0.02, 0.03, 0.06, 0.62)
 
 [node name="HeaderBox" type="VBoxContainer" parent="CanvasLayer/StartScreen"]
 layout_mode = 1

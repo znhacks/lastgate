@@ -563,7 +563,7 @@ func _run_tutorial_step(step: int) -> void:
 	
 	match step:
 		1:
-			if tut_step_label: tut_step_label.text = "TRAINING 1 / 4: MELEE CLASH"
+			if tut_step_label: tut_step_label.text = "TRAINING 1 / 5: MELEE CLASH"
 			if tut_instruction_label: tut_instruction_label.text = "Walking demon approaching on LANE 2. Press [" + k1 + "] or [2] when it reaches your guard zone!"
 			var melee: EnemyMelee = melee_scene.instantiate()
 			melee.lane = 1
@@ -579,7 +579,7 @@ func _run_tutorial_step(step: int) -> void:
 			)
 			enemy_container.add_child(melee)
 		2:
-			if tut_step_label: tut_step_label.text = "TRAINING 2 / 4: FIREBALL DEFLECT"
+			if tut_step_label: tut_step_label.text = "TRAINING 2 / 5: FIREBALL DEFLECT"
 			if tut_instruction_label: tut_instruction_label.text = "Fireball incoming on LANE 1. Press [" + k0 + "] or [1] to deflect it back!"
 			var proj: EnemyProjectile = projectile_scene.instantiate()
 			proj.lane = 0
@@ -594,7 +594,7 @@ func _run_tutorial_step(step: int) -> void:
 			)
 			enemy_container.add_child(proj)
 		3:
-			if tut_step_label: tut_step_label.text = "TRAINING 3 / 4: DEFLECT KILL"
+			if tut_step_label: tut_step_label.text = "TRAINING 3 / 5: DEFLECT KILL"
 			if tut_instruction_label: tut_instruction_label.text = "Deflect the fireball on LANE 3 to eliminate the advancing demon behind it! Press [" + k2 + "] or [3]."
 			var proj: EnemyProjectile = projectile_scene.instantiate()
 			proj.lane = 2
@@ -612,7 +612,7 @@ func _run_tutorial_step(step: int) -> void:
 			enemy_container.add_child(proj)
 			enemy_container.add_child(melee)
 		4:
-			if tut_step_label: tut_step_label.text = "TRAINING 4 / 4: PROJECTILE AOE BLAST"
+			if tut_step_label: tut_step_label.text = "TRAINING 4 / 5: PROJECTILE AOE BLAST"
 			if tut_instruction_label: tut_instruction_label.text = "Deflect the lead fireball on LANE 4. It will collide with the incoming fireball and trigger a massive AoE blast!"
 			var lead_proj: EnemyProjectile = projectile_scene.instantiate()
 			lead_proj.lane = 3
@@ -638,8 +638,24 @@ func _run_tutorial_step(step: int) -> void:
 				_schedule_next_tutorial_step(5)
 			)
 		5:
+			if tut_step_label: tut_step_label.text = "TRAINING 5 / 5: PROTECT INNOCENTS"
+			if tut_instruction_label: tut_instruction_label.text = "An innocent civilian with a GREEN aura is fleeing on LANE 2! DO NOT CLASH — IGNORE THEM and let them enter safely."
+			var inno: Innocent = innocent_scene.instantiate()
+			inno.lane = 1
+			inno.position = Vector2(CharacterData.LANE_X[1], -30.0)
+			inno.speed = 180.0
+			inno.saved.connect(func(pts, pos):
+				_on_innocent_saved(pts, pos)
+				_schedule_next_tutorial_step(6)
+			)
+			inno.hit_by_player.connect(func(pos):
+				spawn_floating_text("⚠️ DO NOT HIT INNOCENTS!", pos, Color(1.0, 0.3, 0.3), true)
+				_schedule_next_tutorial_step(5)
+			)
+			enemy_container.add_child(inno)
+		6:
 			if tut_step_label: tut_step_label.text = "TRAINING COMPLETE!"
-			if tut_instruction_label: tut_instruction_label.text = "Great reflexes! You are ready to defend the Last Gate. Press EXIT to start playing."
+			if tut_instruction_label: tut_instruction_label.text = "Outstanding reflexes! You are ready to defend the Last Gate and protect innocent lives. Press EXIT to start playing."
 
 func _schedule_next_tutorial_step(next_step: int) -> void:
 	if not is_tutorial_active: return
