@@ -1,0 +1,1775 @@
+[gd_scene load_steps=25 format=3 uid="uid://main1gate2scene"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/castle_gate.gd" id="2_gate"]
+[ext_resource type="Texture2D" uid="uid://wqcavvnecmrh" path="res://assets/map.png" id="3_bg"]
+[ext_resource type="Texture2D" uid="uid://bvrbqvxy3fn7h" path="res://assets/felix.png" id="4_felix"]
+[ext_resource type="Texture2D" uid="uid://rrgsxd2cq1f5" path="res://assets/mella.png" id="5_mella"]
+[ext_resource type="FontFile" uid="uid://cf1cet4r3374t" path="res://assets/fonts/Cinzel-Bold.ttf" id="6_cinzel"]
+[ext_resource type="Texture2D" uid="uid://42l7tupm8cbk" path="res://assets/felix_ult.png" id="7_felix_ult"]
+[ext_resource type="Texture2D" uid="uid://1yljutisf7kt" path="res://assets/mella_ult.png" id="8_mella_ult"]
+
+; ─────────────────────────────────────────────
+;  StyleBoxes
+; ─────────────────────────────────────────────
+
+[sub_resource type="StyleBoxFlat" id="SB_top_hud"]
+bg_color = Color(0.05, 0.07, 0.13, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.97, 0.72, 0.19, 0.45)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="SB_hud_pill"]
+bg_color = Color(0.08, 0.11, 0.18, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.4, 0.55, 0.45)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="SB_combo"]
+bg_color = Color(0.92, 0.42, 0.08, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(1, 0.85, 0.3, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="SB_modal_panel"]
+bg_color = Color(0.05, 0.07, 0.12, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.97, 0.72, 0.19, 0.65)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.85)
+shadow_size = 32
+
+[sub_resource type="StyleBoxFlat" id="SB_tut_panel"]
+bg_color = Color(0.05, 0.08, 0.15, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.72, 1.0, 0.85)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 18
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_menu_n"]
+bg_color = Color(0.09, 0.13, 0.22, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.35, 0.48, 0.72, 0.7)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_menu_h"]
+bg_color = Color(0.16, 0.24, 0.4, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.55, 0.78, 1.0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_menu_p"]
+bg_color = Color(0.24, 0.35, 0.58, 1)
+border_width_top = 3
+border_color = Color(0.12, 0.18, 0.32, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_gold_n"]
+bg_color = Color(0.97, 0.72, 0.19, 1)
+border_width_bottom = 4
+border_color = Color(0.72, 0.48, 0.06, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_gold_h"]
+bg_color = Color(1.0, 0.84, 0.38, 1)
+border_width_bottom = 4
+border_color = Color(0.82, 0.58, 0.14, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_btn_gold_p"]
+bg_color = Color(0.78, 0.53, 0.09, 1)
+border_width_top = 4
+border_color = Color(0.58, 0.36, 0.04, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_card_diff_n"]
+bg_color = Color(0.08, 0.11, 0.18, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.35, 0.45, 0.65, 0.6)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="SB_card_diff_h"]
+bg_color = Color(0.12, 0.18, 0.28, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.55, 0.78, 1.0, 0.95)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="SB_lane0_n"]
+bg_color = Color(0.08, 0.18, 0.3, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.28, 0.72, 1.0, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_lane0_h"]
+bg_color = Color(0.12, 0.28, 0.45, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.5, 0.85, 1.0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_lane1_n"]
+bg_color = Color(0.06, 0.22, 0.14, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.25, 0.92, 0.55, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_lane1_h"]
+bg_color = Color(0.1, 0.32, 0.22, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.5, 1.0, 0.72, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_lane2_n"]
+bg_color = Color(0.24, 0.19, 0.05, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(1.0, 0.82, 0.22, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_lane2_h"]
+bg_color = Color(0.36, 0.28, 0.08, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(1.0, 0.92, 0.45, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_lane3_n"]
+bg_color = Color(0.26, 0.09, 0.12, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.95, 0.35, 0.45, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="SB_lane3_h"]
+bg_color = Color(0.38, 0.14, 0.18, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(1.0, 0.55, 0.65, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+; ─────────────────────────────────────────────
+;  Scene Tree
+; ─────────────────────────────────────────────
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 640)
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 720.0
+offset_bottom = 1280.0
+mouse_filter = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+stretch_mode = 6
+flip_v = true
+
+[node name="CastleGate" type="Node2D" parent="."]
+z_index = 10
+script = ExtResource("2_gate")
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="VFXContainer" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+; ══════════════════════════════════════════════
+;  HUD (Top Bar)
+; ══════════════════════════════════════════════
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopHUD" type="HBoxContainer" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 92.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ScoreContainer" type="PanelContainer" parent="CanvasLayer/HUD/TopHUD"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_top_hud")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/HUD/TopHUD/ScoreContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/HUD/TopHUD/ScoreContainer/Margin"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/HUD/TopHUD/ScoreContainer/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.6, 0.68, 0.82, 1)
+theme_override_font_sizes/font_size = 12
+text = "SCORE"
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD/TopHUD/ScoreContainer/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="HPContainer" type="PanelContainer" parent="CanvasLayer/HUD/TopHUD"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_top_hud")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/HUD/TopHUD/HPContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/HUD/TopHUD/HPContainer/Margin"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="CharBadge" type="Label" parent="CanvasLayer/HUD/TopHUD/HPContainer/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 14
+text = "[FELIX]"
+horizontal_alignment = 1
+
+[node name="HeartsBox" type="HBoxContainer" parent="CanvasLayer/HUD/TopHUD/HPContainer/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="HighscoreContainer" type="PanelContainer" parent="CanvasLayer/HUD/TopHUD"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_top_hud")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/HUD/TopHUD/HighscoreContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/HUD/TopHUD/HighscoreContainer/Margin"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="DiffBadge" type="Label" parent="CanvasLayer/HUD/TopHUD/HighscoreContainer/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.28, 0.72, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+text = "[MEDIUM]"
+horizontal_alignment = 2
+
+[node name="HighscoreLabel" type="Label" parent="CanvasLayer/HUD/TopHUD/HighscoreContainer/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="BtnPause" type="Button" parent="CanvasLayer/HUD/TopHUD"]
+custom_minimum_size = Vector2(46, 46)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(0.9, 0.95, 1.0, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "⏸"
+
+; ══════════════════════════════════════════════
+;  Interactive Tutorial Training HUD Banner
+; ══════════════════════════════════════════════
+
+[node name="TutorialHUD" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 110.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/TutorialHUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 100.0
+offset_right = 340.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("SB_tut_panel")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/TutorialHUD/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="HBoxContainer" parent="CanvasLayer/TutorialHUD/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TextVBox" type="VBoxContainer" parent="CanvasLayer/TutorialHUD/Panel/Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="StepLabel" type="Label" parent="CanvasLayer/TutorialHUD/Panel/Margin/VBox/TextVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.72, 1.0, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+text = "TRAINING 1 / 4: MELEE CLASH"
+
+[node name="InstructionLabel" type="Label" parent="CanvasLayer/TutorialHUD/Panel/Margin/VBox/TextVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "Demon incoming on LANE 2. Press [X] or [2] when in reach!"
+autowrap_mode = 2
+
+[node name="BtnExitTutorial" type="Button" parent="CanvasLayer/TutorialHUD/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(95, 42)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+text = "EXIT"
+
+; ══════════════════════════════════════════════
+;  4-Lane Action Controls (Bottom Touch Bar)
+; ══════════════════════════════════════════════
+
+[node name="Controls" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -170.0
+offset_right = -14.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="BtnRow" type="HBoxContainer" parent="CanvasLayer/Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="BtnLane0" type="Button" parent="CanvasLayer/Controls/BtnRow"]
+custom_minimum_size = Vector2(0, 105)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.85, 0.95, 1.0, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_lane0_n")
+theme_override_styles/hover = SubResource("SB_lane0_h")
+text = "L1\n[Z]"
+
+[node name="BtnLane1" type="Button" parent="CanvasLayer/Controls/BtnRow"]
+custom_minimum_size = Vector2(0, 105)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.85, 1.0, 0.9, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_lane1_n")
+theme_override_styles/hover = SubResource("SB_lane1_h")
+text = "L2\n[X]"
+
+[node name="BtnLane2" type="Button" parent="CanvasLayer/Controls/BtnRow"]
+custom_minimum_size = Vector2(0, 105)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1.0, 0.95, 0.8, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_lane2_n")
+theme_override_styles/hover = SubResource("SB_lane2_h")
+text = "L3\n[C]"
+
+[node name="BtnLane3" type="Button" parent="CanvasLayer/Controls/BtnRow"]
+custom_minimum_size = Vector2(0, 105)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(1.0, 0.85, 0.88, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_lane3_n")
+theme_override_styles/hover = SubResource("SB_lane3_h")
+text = "L4\n[V]"
+
+[node name="KeyHint" type="Label" parent="CanvasLayer/Controls"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.65, 0.72, 0.85, 0.8)
+theme_override_font_sizes/font_size = 13
+text = "TAP LANES 1-4 TO CLASH · KEYS: Z, X, C, V / 1, 2, 3, 4"
+horizontal_alignment = 1
+
+; ══════════════════════════════════════════════
+;  Start Screen & Main Menu System
+; ══════════════════════════════════════════════
+
+[node name="StartScreen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Overlay" type="ColorRect" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.03, 0.04, 0.08, 0.92)
+
+[node name="HeaderBox" type="VBoxContainer" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_top = 60.0
+offset_right = 340.0
+offset_bottom = 220.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="TitleTop" type="Label" parent="CanvasLayer/StartScreen/HeaderBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.93, 0.72, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.95)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/shadow_outline_size = 12
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 64
+text = "LAST GATE"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/StartScreen/HeaderBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.86, 0.98, 0.95)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+text = "Protect your castle and innocents"
+horizontal_alignment = 1
+
+[node name="FelixBottomLeft" type="TextureRect" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -960.0
+offset_right = 370.0
+offset_bottom = -380.0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("7_felix_ult")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="MellaBottomRight" type="TextureRect" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -370.0
+offset_top = -960.0
+offset_right = 30.0
+offset_bottom = -380.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("8_mella_ult")
+expand_mode = 1
+stretch_mode = 5
+flip_h = false
+
+; ── 1. Main Menu ──
+[node name="MenuMain" type="PanelContainer" parent="CanvasLayer/StartScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -370.0
+offset_right = 280.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("SB_modal_panel")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/StartScreen/MenuMain"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/MenuMain/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="ButtonsBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/MenuMain/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BtnPlay" type="Button" parent="CanvasLayer/StartScreen/MenuMain/Margin/VBox/ButtonsBox"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.04, 0.05, 0.08, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("SB_btn_gold_n")
+theme_override_styles/hover = SubResource("SB_btn_gold_h")
+theme_override_styles/pressed = SubResource("SB_btn_gold_p")
+text = "PLAY"
+
+[node name="BtnTutorial" type="Button" parent="CanvasLayer/StartScreen/MenuMain/Margin/VBox/ButtonsBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.9, 0.95, 1.0, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "TUTORIAL"
+
+[node name="BtnDefender" type="Button" parent="CanvasLayer/StartScreen/MenuMain/Margin/VBox/ButtonsBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.9, 0.95, 1.0, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "CHANGE DEFENDER"
+
+[node name="BtnSettings" type="Button" parent="CanvasLayer/StartScreen/MenuMain/Margin/VBox/ButtonsBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.9, 0.95, 1.0, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "SETTINGS"
+
+; ── 2. Difficulty Panel ──
+[node name="PanelDifficulty" type="PanelContainer" parent="CanvasLayer/StartScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -370.0
+offset_right = 320.0
+offset_bottom = 370.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("SB_modal_panel")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/StartScreen/PanelDifficulty"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 26
+text = "SELECT DIFFICULTY"
+horizontal_alignment = 1
+
+[node name="Grid" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BtnEasy" type="Button" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("SB_card_diff_n")
+theme_override_styles/hover = SubResource("SB_card_diff_h")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnEasy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = -16.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnEasy/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.3, 0.88, 0.5, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 20
+text = "EASY"
+
+[node name="Desc" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnEasy/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "Relaxed pace with forgiving reaction window"
+
+[node name="HS" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnEasy/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 14
+text = "BEST: 0"
+
+[node name="BtnMedium" type="Button" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("SB_card_diff_n")
+theme_override_styles/hover = SubResource("SB_card_diff_h")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnMedium"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = -16.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnMedium/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.28, 0.72, 1.0, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 20
+text = "MEDIUM"
+
+[node name="Desc" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnMedium/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "Standard challenge with steady acceleration"
+
+[node name="HS" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnMedium/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 14
+text = "BEST: 0"
+
+[node name="BtnHard" type="Button" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("SB_card_diff_n")
+theme_override_styles/hover = SubResource("SB_card_diff_h")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnHard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = -16.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnHard/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1.0, 0.75, 0.2, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 20
+text = "HARD"
+
+[node name="Desc" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnHard/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "Rapid onslaught for trained defenders"
+
+[node name="HS" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnHard/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 14
+text = "BEST: 0"
+
+[node name="BtnExtreme" type="Button" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("SB_card_diff_n")
+theme_override_styles/hover = SubResource("SB_card_diff_h")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnExtreme"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = -16.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnExtreme/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.28, 0.38, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 20
+text = "EXTREME"
+
+[node name="Desc" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnExtreme/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "Relentless fury testing maximum reflexes"
+
+[node name="HS" type="Label" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox/Grid/BtnExtreme/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 14
+text = "BEST: 0"
+
+[node name="BtnBack" type="Button" parent="CanvasLayer/StartScreen/PanelDifficulty/Margin/VBox"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "BACK"
+
+; ── 3. Change Defender Panel (with Perks) ──
+[node name="PanelDefender" type="PanelContainer" parent="CanvasLayer/StartScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -480.0
+offset_right = 330.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("SB_modal_panel")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/StartScreen/PanelDefender"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 26
+text = "CHOOSE DEFENDER"
+horizontal_alignment = 1
+
+[node name="CardsBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="CardFelix" type="Button" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("SB_card_diff_n")
+theme_override_styles/hover = SubResource("SB_card_diff_h")
+
+[node name="Content" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="TopRow" type="HBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Avatar" type="TextureRect" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/Content/TopRow"]
+custom_minimum_size = Vector2(68, 68)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_felix")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Header" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/Content/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/Content/TopRow/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 22
+text = "FELIX"
+
+[node name="Role" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/Content/TopRow/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "The Steadfast Paladin"
+
+[node name="Stats" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.3, 0.88, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "4 HP  ·  Heavy Strike  ·  Fortress Armor"
+
+[node name="PerksBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -240.0
+offset_right = -16.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="P1" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/PerksBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 13
+text = "• Heavy Iron Armor: 4 HP (Takes 4 hits before falling)"
+autowrap_mode = 2
+
+[node name="P2" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/PerksBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 13
+text = "• Fortress Clash: +35 Base score on melee demon clashes"
+autowrap_mode = 2
+
+[node name="P3" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix/PerksBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 13
+text = "• Blast Wave Amplifier: +45% Larger AoE on fireball clashes"
+autowrap_mode = 2
+
+[node name="BtnPerks" type="Button" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -42.0
+offset_right = 60.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+text = "VIEW PERKS"
+
+[node name="ActiveTag" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardFelix"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 13
+text = "[ACTIVE]"
+horizontal_alignment = 2
+
+[node name="CardMella" type="Button" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox"]
+custom_minimum_size = Vector2(0, 360)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("SB_card_diff_n")
+theme_override_styles/hover = SubResource("SB_card_diff_h")
+
+[node name="Content" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="TopRow" type="HBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Avatar" type="TextureRect" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/Content/TopRow"]
+custom_minimum_size = Vector2(68, 68)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_mella")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Header" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/Content/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/Content/TopRow/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.52, 1.0, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 22
+text = "MELLA"
+
+[node name="Role" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/Content/TopRow/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "The Agile Duelist"
+
+[node name="Stats" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.52, 1.0, 1)
+theme_override_font_sizes/font_size = 14
+text = "3 HP  ·  Extended Reach  ·  Fast Glide"
+
+[node name="PerksBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -240.0
+offset_right = -16.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="P1" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/PerksBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.52, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = "• Extended Reach: 720px Guard (+80px earlier window)"
+autowrap_mode = 2
+
+[node name="P2" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/PerksBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.52, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = "• Kinetic Mastery: +65 on Deflect, +120 on Bounce Kill"
+autowrap_mode = 2
+
+[node name="P3" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella/PerksBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.52, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = "• Acrobatic Glide: +50% Faster lane transition speed"
+autowrap_mode = 2
+
+[node name="BtnPerks" type="Button" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -42.0
+offset_right = 60.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+text = "VIEW PERKS"
+
+[node name="ActiveTag" type="Label" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox/CardsBox/CardMella"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = 32.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.78, 0.52, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+text = "[ACTIVE]"
+horizontal_alignment = 2
+
+[node name="BtnBack" type="Button" parent="CanvasLayer/StartScreen/PanelDefender/Margin/VBox"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "BACK"
+
+; ── 4. Settings Panel ──
+[node name="PanelSettings" type="PanelContainer" parent="CanvasLayer/StartScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -280.0
+offset_right = 310.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("SB_modal_panel")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/StartScreen/PanelSettings"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelSettings/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 26
+text = "SETTINGS & KEYBINDS"
+horizontal_alignment = 1
+
+[node name="Grid" type="VBoxContainer" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Row0" type="HBoxContainer" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row0"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.28, 0.72, 1.0, 1)
+theme_override_font_sizes/font_size = 16
+text = "LANE 1 (LEFT)"
+
+[node name="BtnBind" type="Button" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row0"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+text = "[Z]"
+
+[node name="Row1" type="HBoxContainer" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.25, 0.92, 0.55, 1)
+theme_override_font_sizes/font_size = 16
+text = "LANE 2 (MID-L)"
+
+[node name="BtnBind" type="Button" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row1"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+text = "[X]"
+
+[node name="Row2" type="HBoxContainer" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(1.0, 0.82, 0.22, 1)
+theme_override_font_sizes/font_size = 16
+text = "LANE 3 (MID-R)"
+
+[node name="BtnBind" type="Button" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row2"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+text = "[C]"
+
+[node name="Row3" type="HBoxContainer" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row3"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.95, 0.35, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "LANE 4 (RIGHT)"
+
+[node name="BtnBind" type="Button" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row3"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+text = "[V]"
+
+[node name="BtnReset" type="Button" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox"]
+custom_minimum_size = Vector2(210, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "RESET TO DEFAULTS"
+
+[node name="BtnBack" type="Button" parent="CanvasLayer/StartScreen/PanelSettings/Margin/VBox"]
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "BACK"
+
+; ══════════════════════════════════════════════
+;  Game Over Screen
+; ══════════════════════════════════════════════
+
+[node name="GameOverScreen" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Overlay" type="ColorRect" parent="CanvasLayer/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.03, 0.06, 0.92)
+
+[node name="CardPanel" type="PanelContainer" parent="CanvasLayer/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("SB_modal_panel")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/GameOverScreen/CardPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 24
+
+[node name="Card" type="VBoxContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.28, 0.35, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 28
+text = "THE GATE HAS FALLEN"
+horizontal_alignment = 1
+
+[node name="DiffLabel" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.28, 0.72, 1.0, 1)
+theme_override_font_sizes/font_size = 14
+text = "DIFFICULTY: MEDIUM"
+horizontal_alignment = 1
+
+[node name="NewRecordTag" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_font_sizes/font_size = 15
+text = "NEW HIGH RECORD"
+horizontal_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="BoxScore" type="PanelContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_hud_pill")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxScore"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxScore/Margin"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxScore/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.6, 0.66, 0.8, 1)
+theme_override_font_sizes/font_size = 11
+text = "FINAL SCORE"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxScore/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+
+[node name="BoxCombo" type="PanelContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_hud_pill")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxCombo"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxCombo/Margin"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxCombo/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.6, 0.66, 0.8, 1)
+theme_override_font_sizes/font_size = 11
+text = "MAX COMBO"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxCombo/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.32, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+
+[node name="BoxHighScore" type="PanelContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("SB_hud_pill")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxHighScore"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxHighScore/Margin"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxHighScore/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.6, 0.66, 0.8, 1)
+theme_override_font_sizes/font_size = 11
+text = "BEST SCORE"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/Grid/BoxHighScore/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+
+[node name="BtnRow" type="HBoxContainer" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/BtnRow"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.04, 0.05, 0.08, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_gold_n")
+theme_override_styles/hover = SubResource("SB_btn_gold_h")
+theme_override_styles/pressed = SubResource("SB_btn_gold_p")
+text = "PLAY AGAIN"
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/GameOverScreen/CardPanel/Margin/Card/BtnRow"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "MAIN MENU"
+
+; ══════════════════════════════════════════════
+;  Pause Screen & Modal
+; ══════════════════════════════════════════════
+
+[node name="PauseScreen" type="Control" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="ColorRect" parent="CanvasLayer/PauseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.03, 0.06, 0.88)
+
+[node name="CardPanel" type="PanelContainer" parent="CanvasLayer/PauseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -180.0
+offset_right = 220.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("SB_modal_panel")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/PauseScreen/CardPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 28
+
+[node name="Card" type="VBoxContainer" parent="CanvasLayer/PauseScreen/CardPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Title" type="Label" parent="CanvasLayer/PauseScreen/CardPanel/Margin/Card"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.97, 0.72, 0.19, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 30
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="ButtonsBox" type="VBoxContainer" parent="CanvasLayer/PauseScreen/CardPanel/Margin/Card"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BtnResume" type="Button" parent="CanvasLayer/PauseScreen/CardPanel/Margin/Card/ButtonsBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.04, 0.05, 0.08, 1)
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_gold_n")
+theme_override_styles/hover = SubResource("SB_btn_gold_h")
+theme_override_styles/pressed = SubResource("SB_btn_gold_p")
+text = "RESUME"
+
+[node name="BtnPauseSettings" type="Button" parent="CanvasLayer/PauseScreen/CardPanel/Margin/Card/ButtonsBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "SETTINGS"
+
+[node name="BtnPauseMenu" type="Button" parent="CanvasLayer/PauseScreen/CardPanel/Margin/Card/ButtonsBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_cinzel")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("SB_btn_menu_n")
+theme_override_styles/hover = SubResource("SB_btn_menu_h")
+theme_override_styles/pressed = SubResource("SB_btn_menu_p")
+text = "MAIN MENU"

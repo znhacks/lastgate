@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5vfxexp1scen"]
+
+[ext_resource type="Script" path="res://scripts/vfx_explosion.gd" id="1_exp"]
+
+[node name="VFXExplosion" type="CPUParticles2D"]
+z_index = 15
+emitting = false
+amount = 25
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+spread = 180.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 120.0
+initial_velocity_max = 280.0
+scale_amount_min = 4.0
+scale_amount_max = 8.0
+color = Color(0.65, 0.37, 0.92, 1)
+script = ExtResource("1_exp")

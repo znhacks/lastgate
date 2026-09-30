@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Temp & Lock files
+*.tmp
+*.TMP
+~*
+*.log
+
+# Large Binaries / Agent tool executables
+addons/ziva_agent/zivacode/
+addons/ziva_agent/bin-deps/
+addons/ziva_agent/bin/
