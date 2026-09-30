@@ -95,6 +95,7 @@ const COMBO_PHRASES: Array[String] = [
 @onready var btn_bind_2: Button = $CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row2/BtnBind
 @onready var btn_bind_3: Button = $CanvasLayer/StartScreen/PanelSettings/Margin/VBox/Grid/Row3/BtnBind
 @onready var btn_settings_reset: Button = $CanvasLayer/StartScreen/PanelSettings/Margin/VBox/BtnReset
+@onready var btn_settings_reset_progress: Button = $CanvasLayer/StartScreen/PanelSettings/Margin/VBox/BtnResetProgress
 @onready var btn_settings_back: Button = $CanvasLayer/StartScreen/PanelSettings/Margin/VBox/BtnBack
 
 # Interactive Tutorial UI
@@ -309,6 +310,8 @@ func _bind_ui_signals() -> void:
 		btn_bind_3.pressed.connect(func(): _start_rebinding("clash_3", btn_bind_3))
 	if btn_settings_reset:
 		btn_settings_reset.pressed.connect(_reset_default_keybinds)
+	if btn_settings_reset_progress:
+		btn_settings_reset_progress.pressed.connect(_reset_game_progress)
 		
 	# In-game lane buttons
 	if btn_lane_0:
@@ -464,6 +467,28 @@ func _reset_default_keybinds() -> void:
 	_apply_all_keybinds_to_inputmap()
 	_save_game_data()
 	_refresh_keybind_buttons()
+
+func _reset_game_progress() -> void:
+	high_scores = {
+		"EASY": 0,
+		"MEDIUM": 0,
+		"HARD": 0,
+		"EXTREME": 0
+	}
+	selected_char = CharacterData.CharacterType.FELIX
+	_select_character(selected_char)
+	_save_game_data()
+	_refresh_difficulty_hs_labels()
+	_update_hud()
+	if SoundManager.instance:
+		SoundManager.instance.play_damage()
+	if btn_settings_reset_progress:
+		btn_settings_reset_progress.text = "PROGRESS CLEARED! ✓"
+		var timer = get_tree().create_timer(1.8)
+		timer.timeout.connect(func():
+			if btn_settings_reset_progress:
+				btn_settings_reset_progress.text = "RESET GAME PROGRESS"
+		)
 
 func _get_key_name(code: int) -> String:
 	return OS.get_keycode_string(code as Key).to_upper()
